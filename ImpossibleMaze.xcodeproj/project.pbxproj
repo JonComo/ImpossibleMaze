@@ -1,0 +1,488 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8637647219B82A7B0055A800 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8637647119B82A7B0055A800 /* Foundation.framework */; };
+		8637647419B82A7B0055A800 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8637647319B82A7B0055A800 /* CoreGraphics.framework */; };
+		8637647619B82A7B0055A800 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8637647519B82A7B0055A800 /* UIKit.framework */; };
+		8637647819B82A7B0055A800 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8637647719B82A7B0055A800 /* SpriteKit.framework */; };
+		8637647E19B82A7B0055A800 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8637647C19B82A7B0055A800 /* InfoPlist.strings */; };
+		8637648019B82A7B0055A800 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8637647F19B82A7B0055A800 /* main.m */; };
+		8637648419B82A7B0055A800 /* IMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8637648319B82A7B0055A800 /* IMAppDelegate.m */; };
+		8637648719B82A7B0055A800 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8637648519B82A7B0055A800 /* Main.storyboard */; };
+		8637648A19B82A7B0055A800 /* IMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8637648919B82A7B0055A800 /* IMViewController.m */; };
+		8637648D19B82A7B0055A800 /* IMMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8637648C19B82A7B0055A800 /* IMMyScene.m */; };
+		8637648F19B82A7B0055A800 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 8637648E19B82A7B0055A800 /* Spaceship.png */; };
+		8637649119B82A7B0055A800 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8637649019B82A7B0055A800 /* Images.xcassets */; };
+		8637649819B82A7B0055A800 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8637649719B82A7B0055A800 /* XCTest.framework */; };
+		8637649919B82A7B0055A800 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8637647119B82A7B0055A800 /* Foundation.framework */; };
+		8637649A19B82A7B0055A800 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8637647519B82A7B0055A800 /* UIKit.framework */; };
+		863764A219B82A7B0055A800 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 863764A019B82A7B0055A800 /* InfoPlist.strings */; };
+		863764A419B82A7B0055A800 /* ImpossibleMazeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 863764A319B82A7B0055A800 /* ImpossibleMazeTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8637649B19B82A7B0055A800 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8637646619B82A7B0055A800 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8637646D19B82A7B0055A800;
+			remoteInfo = ImpossibleMaze;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8637646E19B82A7B0055A800 /* ImpossibleMaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImpossibleMaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8637647119B82A7B0055A800 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8637647319B82A7B0055A800 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8637647519B82A7B0055A800 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8637647719B82A7B0055A800 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		8637647B19B82A7B0055A800 /* ImpossibleMaze-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ImpossibleMaze-Info.plist"; sourceTree = "<group>"; };
+		8637647D19B82A7B0055A800 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8637647F19B82A7B0055A800 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8637648119B82A7B0055A800 /* ImpossibleMaze-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImpossibleMaze-Prefix.pch"; sourceTree = "<group>"; };
+		8637648219B82A7B0055A800 /* IMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMAppDelegate.h; sourceTree = "<group>"; };
+		8637648319B82A7B0055A800 /* IMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMAppDelegate.m; sourceTree = "<group>"; };
+		8637648619B82A7B0055A800 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8637648819B82A7B0055A800 /* IMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMViewController.h; sourceTree = "<group>"; };
+		8637648919B82A7B0055A800 /* IMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMViewController.m; sourceTree = "<group>"; };
+		8637648B19B82A7B0055A800 /* IMMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMMyScene.h; sourceTree = "<group>"; };
+		8637648C19B82A7B0055A800 /* IMMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMMyScene.m; sourceTree = "<group>"; };
+		8637648E19B82A7B0055A800 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		8637649019B82A7B0055A800 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8637649619B82A7B0055A800 /* ImpossibleMazeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImpossibleMazeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8637649719B82A7B0055A800 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		8637649F19B82A7B0055A800 /* ImpossibleMazeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ImpossibleMazeTests-Info.plist"; sourceTree = "<group>"; };
+		863764A119B82A7B0055A800 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		863764A319B82A7B0055A800 /* ImpossibleMazeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImpossibleMazeTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8637646B19B82A7B0055A800 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8637647419B82A7B0055A800 /* CoreGraphics.framework in Frameworks */,
+				8637647619B82A7B0055A800 /* UIKit.framework in Frameworks */,
+				8637647819B82A7B0055A800 /* SpriteKit.framework in Frameworks */,
+				8637647219B82A7B0055A800 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8637649319B82A7B0055A800 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8637649819B82A7B0055A800 /* XCTest.framework in Frameworks */,
+				8637649A19B82A7B0055A800 /* UIKit.framework in Frameworks */,
+				8637649919B82A7B0055A800 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8637646519B82A7B0055A800 = {
+			isa = PBXGroup;
+			children = (
+				8637647919B82A7B0055A800 /* ImpossibleMaze */,
+				8637649D19B82A7B0055A800 /* ImpossibleMazeTests */,
+				8637647019B82A7B0055A800 /* Frameworks */,
+				8637646F19B82A7B0055A800 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8637646F19B82A7B0055A800 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8637646E19B82A7B0055A800 /* ImpossibleMaze.app */,
+				8637649619B82A7B0055A800 /* ImpossibleMazeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8637647019B82A7B0055A800 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8637647119B82A7B0055A800 /* Foundation.framework */,
+				8637647319B82A7B0055A800 /* CoreGraphics.framework */,
+				8637647519B82A7B0055A800 /* UIKit.framework */,
+				8637647719B82A7B0055A800 /* SpriteKit.framework */,
+				8637649719B82A7B0055A800 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8637647919B82A7B0055A800 /* ImpossibleMaze */ = {
+			isa = PBXGroup;
+			children = (
+				8637648219B82A7B0055A800 /* IMAppDelegate.h */,
+				8637648319B82A7B0055A800 /* IMAppDelegate.m */,
+				8637648519B82A7B0055A800 /* Main.storyboard */,
+				8637648819B82A7B0055A800 /* IMViewController.h */,
+				8637648919B82A7B0055A800 /* IMViewController.m */,
+				8637648B19B82A7B0055A800 /* IMMyScene.h */,
+				8637648C19B82A7B0055A800 /* IMMyScene.m */,
+				8637648E19B82A7B0055A800 /* Spaceship.png */,
+				8637649019B82A7B0055A800 /* Images.xcassets */,
+				8637647A19B82A7B0055A800 /* Supporting Files */,
+			);
+			path = ImpossibleMaze;
+			sourceTree = "<group>";
+		};
+		8637647A19B82A7B0055A800 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8637647B19B82A7B0055A800 /* ImpossibleMaze-Info.plist */,
+				8637647C19B82A7B0055A800 /* InfoPlist.strings */,
+				8637647F19B82A7B0055A800 /* main.m */,
+				8637648119B82A7B0055A800 /* ImpossibleMaze-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8637649D19B82A7B0055A800 /* ImpossibleMazeTests */ = {
+			isa = PBXGroup;
+			children = (
+				863764A319B82A7B0055A800 /* ImpossibleMazeTests.m */,
+				8637649E19B82A7B0055A800 /* Supporting Files */,
+			);
+			path = ImpossibleMazeTests;
+			sourceTree = "<group>";
+		};
+		8637649E19B82A7B0055A800 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8637649F19B82A7B0055A800 /* ImpossibleMazeTests-Info.plist */,
+				863764A019B82A7B0055A800 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8637646D19B82A7B0055A800 /* ImpossibleMaze */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 863764A719B82A7B0055A800 /* Build configuration list for PBXNativeTarget "ImpossibleMaze" */;
+			buildPhases = (
+				8637646A19B82A7B0055A800 /* Sources */,
+				8637646B19B82A7B0055A800 /* Frameworks */,
+				8637646C19B82A7B0055A800 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ImpossibleMaze;
+			productName = ImpossibleMaze;
+			productReference = 8637646E19B82A7B0055A800 /* ImpossibleMaze.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8637649519B82A7B0055A800 /* ImpossibleMazeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 863764AA19B82A7B0055A800 /* Build configuration list for PBXNativeTarget "ImpossibleMazeTests" */;
+			buildPhases = (
+				8637649219B82A7B0055A800 /* Sources */,
+				8637649319B82A7B0055A800 /* Frameworks */,
+				8637649419B82A7B0055A800 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8637649C19B82A7B0055A800 /* PBXTargetDependency */,
+			);
+			name = ImpossibleMazeTests;
+			productName = ImpossibleMazeTests;
+			productReference = 8637649619B82A7B0055A800 /* ImpossibleMazeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8637646619B82A7B0055A800 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = IM;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Como;
+				TargetAttributes = {
+					8637649519B82A7B0055A800 = {
+						TestTargetID = 8637646D19B82A7B0055A800;
+					};
+				};
+			};
+			buildConfigurationList = 8637646919B82A7B0055A800 /* Build configuration list for PBXProject "ImpossibleMaze" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8637646519B82A7B0055A800;
+			productRefGroup = 8637646F19B82A7B0055A800 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8637646D19B82A7B0055A800 /* ImpossibleMaze */,
+				8637649519B82A7B0055A800 /* ImpossibleMazeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8637646C19B82A7B0055A800 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8637647E19B82A7B0055A800 /* InfoPlist.strings in Resources */,
+				8637649119B82A7B0055A800 /* Images.xcassets in Resources */,
+				8637648F19B82A7B0055A800 /* Spaceship.png in Resources */,
+				8637648719B82A7B0055A800 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8637649419B82A7B0055A800 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				863764A219B82A7B0055A800 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8637646A19B82A7B0055A800 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8637648D19B82A7B0055A800 /* IMMyScene.m in Sources */,
+				8637648419B82A7B0055A800 /* IMAppDelegate.m in Sources */,
+				8637648019B82A7B0055A800 /* main.m in Sources */,
+				8637648A19B82A7B0055A800 /* IMViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8637649219B82A7B0055A800 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				863764A419B82A7B0055A800 /* ImpossibleMazeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8637649C19B82A7B0055A800 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8637646D19B82A7B0055A800 /* ImpossibleMaze */;
+			targetProxy = 8637649B19B82A7B0055A800 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8637647C19B82A7B0055A800 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8637647D19B82A7B0055A800 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8637648519B82A7B0055A800 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8637648619B82A7B0055A800 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		863764A019B82A7B0055A800 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				863764A119B82A7B0055A800 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		863764A519B82A7B0055A800 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		863764A619B82A7B0055A800 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		863764A819B82A7B0055A800 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ImpossibleMaze/ImpossibleMaze-Prefix.pch";
+				INFOPLIST_FILE = "ImpossibleMaze/ImpossibleMaze-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		863764A919B82A7B0055A800 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ImpossibleMaze/ImpossibleMaze-Prefix.pch";
+				INFOPLIST_FILE = "ImpossibleMaze/ImpossibleMaze-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		863764AB19B82A7B0055A800 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ImpossibleMaze.app/ImpossibleMaze";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ImpossibleMaze/ImpossibleMaze-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ImpossibleMazeTests/ImpossibleMazeTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		863764AC19B82A7B0055A800 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ImpossibleMaze.app/ImpossibleMaze";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ImpossibleMaze/ImpossibleMaze-Prefix.pch";
+				INFOPLIST_FILE = "ImpossibleMazeTests/ImpossibleMazeTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8637646919B82A7B0055A800 /* Build configuration list for PBXProject "ImpossibleMaze" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				863764A519B82A7B0055A800 /* Debug */,
+				863764A619B82A7B0055A800 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		863764A719B82A7B0055A800 /* Build configuration list for PBXNativeTarget "ImpossibleMaze" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				863764A819B82A7B0055A800 /* Debug */,
+				863764A919B82A7B0055A800 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		863764AA19B82A7B0055A800 /* Build configuration list for PBXNativeTarget "ImpossibleMazeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				863764AB19B82A7B0055A800 /* Debug */,
+				863764AC19B82A7B0055A800 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8637646619B82A7B0055A800 /* Project object */;
+}

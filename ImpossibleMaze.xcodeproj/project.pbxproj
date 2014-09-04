@@ -17,13 +17,14 @@
 		8637648719B82A7B0055A800 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8637648519B82A7B0055A800 /* Main.storyboard */; };
 		8637648A19B82A7B0055A800 /* IMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8637648919B82A7B0055A800 /* IMViewController.m */; };
 		8637648D19B82A7B0055A800 /* IMMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8637648C19B82A7B0055A800 /* IMMyScene.m */; };
-		8637648F19B82A7B0055A800 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 8637648E19B82A7B0055A800 /* Spaceship.png */; };
 		8637649119B82A7B0055A800 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8637649019B82A7B0055A800 /* Images.xcassets */; };
 		8637649819B82A7B0055A800 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8637649719B82A7B0055A800 /* XCTest.framework */; };
 		8637649919B82A7B0055A800 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8637647119B82A7B0055A800 /* Foundation.framework */; };
 		8637649A19B82A7B0055A800 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8637647519B82A7B0055A800 /* UIKit.framework */; };
 		863764A219B82A7B0055A800 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 863764A019B82A7B0055A800 /* InfoPlist.strings */; };
 		863764A419B82A7B0055A800 /* ImpossibleMazeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 863764A319B82A7B0055A800 /* ImpossibleMazeTests.m */; };
+		863764B119B82BFC0055A800 /* MZMaze.m in Sources */ = {isa = PBXBuildFile; fileRef = 863764AE19B82BFC0055A800 /* MZMaze.m */; };
+		863764B219B82BFC0055A800 /* MZRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 863764B019B82BFC0055A800 /* MZRoom.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,13 +54,16 @@
 		8637648919B82A7B0055A800 /* IMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMViewController.m; sourceTree = "<group>"; };
 		8637648B19B82A7B0055A800 /* IMMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMMyScene.h; sourceTree = "<group>"; };
 		8637648C19B82A7B0055A800 /* IMMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMMyScene.m; sourceTree = "<group>"; };
-		8637648E19B82A7B0055A800 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		8637649019B82A7B0055A800 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8637649619B82A7B0055A800 /* ImpossibleMazeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImpossibleMazeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8637649719B82A7B0055A800 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		8637649F19B82A7B0055A800 /* ImpossibleMazeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ImpossibleMazeTests-Info.plist"; sourceTree = "<group>"; };
 		863764A119B82A7B0055A800 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		863764A319B82A7B0055A800 /* ImpossibleMazeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImpossibleMazeTests.m; sourceTree = "<group>"; };
+		863764AD19B82BFC0055A800 /* MZMaze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZMaze.h; sourceTree = "<group>"; };
+		863764AE19B82BFC0055A800 /* MZMaze.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZMaze.m; sourceTree = "<group>"; };
+		863764AF19B82BFC0055A800 /* MZRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZRoom.h; sourceTree = "<group>"; };
+		863764B019B82BFC0055A800 /* MZRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZRoom.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 		8637647919B82A7B0055A800 /* ImpossibleMaze */ = {
 			isa = PBXGroup;
 			children = (
+				863764B319B82C000055A800 /* Maze */,
 				8637648219B82A7B0055A800 /* IMAppDelegate.h */,
 				8637648319B82A7B0055A800 /* IMAppDelegate.m */,
 				8637648519B82A7B0055A800 /* Main.storyboard */,
@@ -128,7 +133,6 @@
 				8637648919B82A7B0055A800 /* IMViewController.m */,
 				8637648B19B82A7B0055A800 /* IMMyScene.h */,
 				8637648C19B82A7B0055A800 /* IMMyScene.m */,
-				8637648E19B82A7B0055A800 /* Spaceship.png */,
 				8637649019B82A7B0055A800 /* Images.xcassets */,
 				8637647A19B82A7B0055A800 /* Supporting Files */,
 			);
@@ -162,6 +166,17 @@
 				863764A019B82A7B0055A800 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		863764B319B82C000055A800 /* Maze */ = {
+			isa = PBXGroup;
+			children = (
+				863764AD19B82BFC0055A800 /* MZMaze.h */,
+				863764AE19B82BFC0055A800 /* MZMaze.m */,
+				863764AF19B82BFC0055A800 /* MZRoom.h */,
+				863764B019B82BFC0055A800 /* MZRoom.m */,
+			);
+			name = Maze;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,7 +258,6 @@
 			files = (
 				8637647E19B82A7B0055A800 /* InfoPlist.strings in Resources */,
 				8637649119B82A7B0055A800 /* Images.xcassets in Resources */,
-				8637648F19B82A7B0055A800 /* Spaceship.png in Resources */,
 				8637648719B82A7B0055A800 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +278,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8637648D19B82A7B0055A800 /* IMMyScene.m in Sources */,
+				863764B219B82BFC0055A800 /* MZRoom.m in Sources */,
+				863764B119B82BFC0055A800 /* MZMaze.m in Sources */,
 				8637648419B82A7B0055A800 /* IMAppDelegate.m in Sources */,
 				8637648019B82A7B0055A800 /* main.m in Sources */,
 				8637648A19B82A7B0055A800 /* IMViewController.m in Sources */,

@@ -48,8 +48,6 @@
             newRoom.y = j;
             
             self.maze[i][j] = newRoom;
-            
-            NSLog(@"Making room: %i %i", i, j);
         }
     }
     
@@ -68,8 +66,6 @@
         
         x = room.x;
         y = room.y;
-        
-        NSLog(@"Room: %i %i", x, y);
         
         NSMutableArray *openRooms = [NSMutableArray array];
         

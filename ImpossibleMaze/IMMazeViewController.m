@@ -32,7 +32,7 @@
     
     // Create and configure the scene.
     scene = [IMMazeScene sceneWithSize:skView.bounds.size];
-    scene.mazeSize = CGSizeMake(8, 1);
+    scene.mazeSize = CGSizeMake(16, 16);
     
     scene.presentingViewController = self;
     scene.scaleMode = SKSceneScaleModeAspectFit;

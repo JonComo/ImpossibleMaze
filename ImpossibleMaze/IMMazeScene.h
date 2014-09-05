@@ -8,6 +8,8 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+#define HIGHSCORE @"highscore"
+
 @interface IMMazeScene : SKScene
 
 @property (nonatomic, weak) UIViewController *presentingViewController;

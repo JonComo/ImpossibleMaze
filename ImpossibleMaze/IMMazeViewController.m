@@ -23,6 +23,8 @@
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor blackColor];
+    
     // Configure the view.
     SKView * skView = (SKView *)self.view;
     
@@ -32,7 +34,7 @@
     
     // Create and configure the scene.
     scene = [IMMazeScene sceneWithSize:skView.bounds.size];
-    scene.mazeSize = CGSizeMake(16, 16);
+    scene.mazeSize = self.mazeSize;
     
     scene.presentingViewController = self;
     scene.scaleMode = SKSceneScaleModeAspectFit;

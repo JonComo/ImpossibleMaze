@@ -10,4 +10,6 @@
 
 @interface IMMazeViewController : UIViewController
 
+@property CGSize mazeSize;
+
 @end

@@ -8,10 +8,16 @@
 
 #import "IMMazeScene.h"
 
+#import "IMWall.h"
 #import "MZMaze.h"
+
+@import AudioToolbox;
 
 static const uint32_t playerCategory    =  0x1 << 0;
 static const uint32_t wallCategory      =  0x1 << 1;
+
+static const float highScorePadding = 2.0;
+static const float highScoreBackgroundPadding = 4.0;
 
 @interface IMMazeScene () <SKPhysicsContactDelegate>
 
@@ -22,6 +28,7 @@ static const uint32_t wallCategory      =  0x1 << 1;
     SKSpriteNode *player;
     
     SKLabelNode *highScoreLabel;
+    SKSpriteNode *highScoreLabelBackground;
     SKSpriteNode *highScoreMarker;
     
     NSMutableArray *walls;
@@ -37,6 +44,13 @@ static const uint32_t wallCategory      =  0x1 << 1;
     __block BOOL canMoveWalls;
     
     BOOL isGameOver;
+    
+    int slowUpdate;
+    
+    int shakeAmount;
+    SKNode *root;
+    
+    float score;
 }
 
 -(id)initWithSize:(CGSize)size
@@ -44,12 +58,15 @@ static const uint32_t wallCategory      =  0x1 << 1;
     if (self = [super initWithSize:size])
     {
         self.backgroundColor = [UIColor whiteColor];
+                
+        //NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+        //[[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
         
-        NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
-        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+        root = [[SKNode alloc] init];
+        [self addChild:root];
         
         _world = [[SKNode alloc] init];
-        [self addChild:_world];
+        [root addChild:_world];
         
         self.physicsWorld.gravity = CGVectorMake(0, 0);
         self.physicsWorld.contactDelegate = self;
@@ -62,30 +79,42 @@ static const uint32_t wallCategory      =  0x1 << 1;
         player.position = CGPointMake(size.width/2, size.height/2);
         [self.world addChild:player];
         
-        player.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:player.size.width/2];
+        player.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:player.size.width * 0.4];
         player.physicsBody.categoryBitMask = playerCategory;
         player.physicsBody.contactTestBitMask = wallCategory;
         player.physicsBody.allowsRotation = NO;
         player.zPosition = 10;
         
+        highScoreLabelBackground = [[SKSpriteNode alloc] initWithColor:[UIColor redColor] size:highScoreLabel.frame.size];
+        highScoreLabelBackground.position = highScoreLabel.position;
+        highScoreLabelBackground.zPosition = 12;
+        [self.world addChild:highScoreLabelBackground];
+        
+        highScoreMarker = [[SKSpriteNode alloc] initWithColor:[UIColor redColor] size:CGSizeMake(400, 2)];
+        highScoreMarker.position = CGPointMake(size.width/2, player.position.y + player.size.height/2);
+        highScoreMarker.zPosition = 10;
+        [self.world addChild:highScoreMarker];
+        
         highScoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica-Bold"];
         highScoreLabel.fontSize = 18;
         highScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
-        highScoreLabel.fontColor = [UIColor redColor];
-        highScoreLabel.position = CGPointMake(4, size.height/2);
+        highScoreLabel.fontColor = [UIColor whiteColor];
         highScoreLabel.zPosition = 20;
+        highScoreLabel.text = @"0";
         [self.world addChild:highScoreLabel];
         
-        highScoreMarker = [[SKSpriteNode alloc] initWithColor:[UIColor redColor] size:CGSizeMake(40, 4)];
-        highScoreMarker.position = CGPointMake(highScoreMarker.size.width/2, player.position.y);
+        
         NSNumber *previousHighScore = [[NSUserDefaults standardUserDefaults] objectForKey:HIGHSCORE];
         if (previousHighScore){
             highScoreMarker.position = CGPointMake(highScoreMarker.position.x, [previousHighScore floatValue]);
         }
-        [self.world addChild:highScoreMarker];
-        highScoreMarker.zPosition = 10;
+        
+        [self updateHighScoreLabel];
         
         lastMazeY = 0;
+        
+        slowUpdate = 0;
+        shakeAmount = 0;
     }
     return self;
 }
@@ -106,12 +135,13 @@ static const uint32_t wallCategory      =  0x1 << 1;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
+            
             [maze iterateRooms:^(MZRoom *room) {
                 
                 CGPoint spawn = CGPointMake(room.x * roomSize + roomSize/2, room.y * roomSize + roomSize/2);
                 
                 if (!room.S && !(room.x == openTop && room.y == 0)){
-                    [weakSelf addWallToPoint:CGPointMake(spawn.x, spawn.y - roomSize/2 + yPosition) size:CGSizeMake(roomSize, roomSize/6)];
+                    [weakSelf addWallToPoint:CGPointMake(spawn.x, spawn.y - roomSize/2 + yPosition) size:CGSizeMake(roomSize + roomSize/6, roomSize/6)];
                 }
                 
                 if (!room.W && !(room.x == 0)){
@@ -126,8 +156,8 @@ static const uint32_t wallCategory      =  0x1 << 1;
 
 -(SKSpriteNode *)addWallToPoint:(CGPoint)point size:(CGSize)size
 {
-    SKSpriteNode *wall = [[SKSpriteNode alloc] initWithColor:[UIColor blackColor] size:size];
-    wall.position = point;
+    IMWall *wall = [[IMWall alloc] initWithColor:[UIColor blackColor] size:size position:point];
+
     wall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:wall.size];
     wall.physicsBody.dynamic = NO;
     
@@ -135,10 +165,9 @@ static const uint32_t wallCategory      =  0x1 << 1;
     wall.physicsBody.contactTestBitMask = playerCategory;
     
     wall.zPosition = 0;
-    
     wall.alpha = 1;
-    [self.world addChild:wall];
     
+    [self.world addChild:wall];
     [walls addObject:wall];
     
     return wall;
@@ -147,7 +176,7 @@ static const uint32_t wallCategory      =  0x1 << 1;
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (isGameOver){
-        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        [self.presentingViewController dismissViewControllerAnimated:NO completion:nil];
         return;
     }
     
@@ -169,17 +198,28 @@ static const uint32_t wallCategory      =  0x1 << 1;
     if (player.position.y < self.size.height/2) player.position = CGPointMake(player.position.x, self.size.height/2);
     
     self.world.position = CGPointMake(self.world.position.x, -player.position.y + self.size.height/2);
+    
+    //highscore
+    score = player.position.y + player.size.height/2;
+    if (highScoreMarker.position.y < score){
+        highScoreMarker.position = CGPointMake(highScoreMarker.position.x, score);
+        
+        [self updateHighScoreLabel];
+    }
 }
 
 -(void)update:(CFTimeInterval)currentTime
 {
-    //highscore
-    if (highScoreMarker.position.y < player.position.y){
-        highScoreMarker.position = CGPointMake(highScoreMarker.position.x, player.position.y);
-        
-        highScoreLabel.position = CGPointMake(highScoreLabel.position.x, highScoreMarker.position.y + 4);
-        highScoreLabel.text = [NSString stringWithFormat:@"%.0f", highScoreMarker.position.y];
+    if (shakeAmount > 0){
+        float offsetX = (float)(arc4random()%shakeAmount) - (float)shakeAmount/2;
+        float offsetY = (float)(arc4random()%shakeAmount) - (float)shakeAmount/2;
+        root.position = CGPointMake(offsetX, offsetY);
+        shakeAmount--;
+    }else{
+        root.position = CGPointZero;
     }
+    
+    if (isGameOver) return; // ************************************* Game Over *********************************
     
     if (player.position.y + self.size.height > lastMazeY){
         if (!createdBottom){
@@ -193,15 +233,51 @@ static const uint32_t wallCategory      =  0x1 << 1;
         
         [self addMazeOfSize:self.mazeSize yPosition:lastMazeY openTop:top openBottom:bottom];
     }
+    
+    for (IMWall *wall in walls){
+        [wall updateWithOffset:player.position.y];
+    }
+    
+    slowUpdate ++;
+    if (slowUpdate > 80){
+        slowUpdate = 0;
+        [self updateHighScoreLabel];
+    }
+}
+
+-(void)updateHighScoreLabel
+{
+    highScoreLabel.text = [NSString stringWithFormat:@"%.0f", highScoreMarker.position.y];
+    highScoreLabel.position = CGPointMake(highScoreLabel.position.x, highScoreMarker.position.y - highScoreLabel.frame.size.height/2);
+    
+    if (player.position.x < self.size.width/2){
+        highScoreLabel.position = CGPointMake(self.size.width - highScorePadding, highScoreLabel.position.y);
+        highScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
+    }else{
+        highScoreLabel.position = CGPointMake(highScorePadding, highScoreLabel.position.y);
+        highScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+    }
+    
+    //background view
+    if (highScoreLabel.horizontalAlignmentMode == SKLabelHorizontalAlignmentModeLeft){
+        highScoreLabelBackground.position = CGPointMake(highScoreLabel.position.x + highScoreLabel.frame.size.width/2, highScoreLabel.position.y + highScoreLabel.frame.size.height/2);
+    }else{
+        highScoreLabelBackground.position = CGPointMake(highScoreLabel.position.x - highScoreLabel.frame.size.width/2, highScoreLabel.position.y + highScoreLabel.frame.size.height/2);
+    }
+    
+    highScoreLabelBackground.size = CGSizeMake(highScoreLabel.frame.size.width + highScoreBackgroundPadding, highScoreLabel.frame.size.height + highScoreBackgroundPadding);
 }
 
 -(void)didBeginContact:(SKPhysicsContact *)contact
 {
+    [self runAction:[SKAction playSoundFileNamed:@"Die.wav" waitForCompletion:NO]];
     [self gameOver];
 }
 
 -(void)gameOver
 {
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    
     [[NSUserDefaults standardUserDefaults] setObject:@(highScoreMarker.position.y) forKey:HIGHSCORE];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
@@ -210,7 +286,9 @@ static const uint32_t wallCategory      =  0x1 << 1;
     }
     
     player.color = [UIColor redColor];
-    [highScoreMarker runAction:[SKAction scaleXTo:100 duration:0.5]];
+    [highScoreMarker runAction:[SKAction scaleXTo:20 duration:0.5]];
+    
+    shakeAmount = 12;
     
     isGameOver = YES;
 }

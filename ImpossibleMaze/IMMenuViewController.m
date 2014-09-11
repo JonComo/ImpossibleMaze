@@ -29,12 +29,9 @@
     
     [[RRAudioEngine sharedEngine] playSoundNamed:@"soundtrack" extension:@"wav" loop:YES];
     
-    ValueChanged updateUI = ^(int value){
+    [IMLivesManager sharedManager].updateUI = ^(void){
         labelLives.text = [NSString stringWithFormat:@"Lives: %i Next: %i s", [IMLivesManager sharedManager].lives, [IMLivesManager sharedManager].secondsUntilNextLife];
     };
-    
-    [IMLivesManager sharedManager].livesChangedHandler = updateUI;
-    [IMLivesManager sharedManager].secondsChangedHandler = updateUI;
 }
 
 - (void)didReceiveMemoryWarning

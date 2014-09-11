@@ -8,17 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^ValueChanged)(int);
-
+typedef void (^ValueChanged)(void);
 
 @interface IMLivesManager : NSObject
 
 @property (nonatomic, assign) int lives;
 
-@property (nonatomic, copy) ValueChanged livesChangedHandler;
-@property (nonatomic, copy) ValueChanged secondsChangedHandler;
+@property (nonatomic, copy) ValueChanged updateUI;
 
 @property (nonatomic, assign) int interval;
+
+@property (nonatomic, strong) NSDate *dateOfNextLife;
+@property (nonatomic, strong) NSDate *dateSaved;
+
 @property (nonatomic, assign) int secondsUntilNextLife;
 
 +(IMLivesManager *)sharedManager;

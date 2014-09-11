@@ -54,21 +54,22 @@ static NSString *IMLivesManagerDateNextLifeKey = @"nextLife";
 {
     _lives = lives;
     
-    if (self.livesChangedHandler) self.livesChangedHandler(lives);
+    if (self.updateUI) self.updateUI();
 }
 
 -(void)handleApplicationBecameActive
 {
     self.interval = [self archivedInterval];
-    self.lives = [self archivedLives]; //get archived lives
+    self.lives = [self archivedLives];
+    self.dateOfNextLife = [self archivedDateOfNextLife];
     
     [self assignLivesGainedWhileClosed];
     
     [timerLives invalidate];
     timerLives = nil;
-    timerLives = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDownInterval) userInfo:nil repeats:YES];
+    timerLives = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeLeftUntilNext) userInfo:nil repeats:YES];
     
-    if (self.secondsChangedHandler) self.secondsChangedHandler(self.secondsUntilNextLife);
+    if (self.updateUI) self.updateUI();
 }
 
 -(void)handleApplicationBecameInactive
@@ -81,27 +82,32 @@ static NSString *IMLivesManagerDateNextLifeKey = @"nextLife";
 
 -(void)assignLivesGainedWhileClosed
 {
-    NSDate *dateSaved = [[NSUserDefaults standardUserDefaults] objectForKey:IMLivesManagerDateSavedKey];
+    self.dateSaved = [[NSUserDefaults standardUserDefaults] objectForKey:IMLivesManagerDateSavedKey];
     
-    if (dateSaved){
-        int secondsClosed = [[NSDate date] timeIntervalSinceDate:dateSaved];
-        
-        self.lives += ceil(secondsClosed / self.interval);
+    if (self.dateSaved && self.dateOfNextLife){
+        int secondsDifference = [self.dateOfNextLife timeIntervalSinceDate:self.dateSaved];
+        if (secondsDifference > 0){
+            //still some time to go
+            
+        }else{
+            self.lives += ceil(-secondsDifference / self.interval);
+        }
         
         [self saveLives]; //also archives date so we dont accidently repeat process
     }
 }
 
--(void)countDownInterval
+-(void)timeLeftUntilNext
 {
-    self.secondsUntilNextLife --;
+    self.secondsUntilNextLife = [self.dateSaved timeIntervalSinceDate:self.dateOfNextLife];
     
     if (self.secondsUntilNextLife <= 0){
         self.lives ++;
-        self.secondsUntilNextLife = self.interval;
+        
+        self.dateOfNextLife = [NSDate dateWithTimeIntervalSinceNow:self.interval];
     }
     
-    if (self.secondsChangedHandler) self.secondsChangedHandler(self.secondsUntilNextLife);
+    if (self.updateUI) self.updateUI();
 }
 
 -(int)archivedLives
@@ -128,6 +134,20 @@ static NSString *IMLivesManagerDateNextLifeKey = @"nextLife";
     }
     
     return INITIAL_INTERVAL;
+}
+
+-(NSDate *)archivedDateOfNextLife
+{
+    NSDate *futureDate = [[NSUserDefaults standardUserDefaults] objectForKey:IMLivesManagerDateNextLifeKey];
+    if (futureDate){
+        return futureDate;
+    }else{
+        futureDate = [NSDate dateWithTimeIntervalSinceNow:self.interval];
+        [[NSUserDefaults standardUserDefaults] setObject:futureDate forKey:IMLivesManagerDateNextLifeKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    return futureDate;
 }
 
 -(void)saveLives

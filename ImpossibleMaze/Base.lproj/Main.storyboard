@@ -41,17 +41,33 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lives: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1l-Lg-2Nu">
+                                <rect key="frame" x="20" y="420" width="280" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="yvH-y4-Fta"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="fmu-co-OSS" secondAttribute="trailing" constant="20" id="102-bO-c8w"/>
+                            <constraint firstItem="C1l-Lg-2Nu" firstAttribute="leading" secondItem="M6z-ur-ngI" secondAttribute="leading" constant="20" id="7zB-em-HiS"/>
                             <constraint firstAttribute="trailing" secondItem="IZk-0e-rcR" secondAttribute="trailing" constant="20" id="9KD-bb-mHI"/>
                             <constraint firstItem="IZk-0e-rcR" firstAttribute="leading" secondItem="M6z-ur-ngI" secondAttribute="leading" constant="20" id="Fd2-id-7VI"/>
+                            <constraint firstAttribute="trailing" secondItem="C1l-Lg-2Nu" secondAttribute="trailing" constant="20" id="PFB-9T-fTC"/>
                             <constraint firstItem="6Kq-hR-u8c" firstAttribute="top" secondItem="fmu-co-OSS" secondAttribute="bottom" constant="20" id="Qla-VA-3zB"/>
                             <constraint firstItem="IZk-0e-rcR" firstAttribute="top" secondItem="bDv-PB-8cH" secondAttribute="bottom" constant="20" id="oVA-XE-6M8"/>
                             <constraint firstItem="fmu-co-OSS" firstAttribute="leading" secondItem="M6z-ur-ngI" secondAttribute="leading" constant="20" id="roH-NA-opu"/>
+                            <constraint firstItem="fmu-co-OSS" firstAttribute="top" secondItem="C1l-Lg-2Nu" secondAttribute="bottom" constant="8" id="sou-pG-FPj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="labelLives" destination="C1l-Lg-2Nu" id="bAt-oH-fgG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GBS-Tv-V0t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -60,7 +76,6 @@
         <!--Maze View Controller-->
         <scene sceneID="CtS-rA-C9T">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="btX-cZ-eVz" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="mazeVC" id="LVB-YS-i5n" customClass="IMMazeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TvN-0d-DFh"/>
@@ -72,6 +87,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="btX-cZ-eVz" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="182" y="67"/>
         </scene>

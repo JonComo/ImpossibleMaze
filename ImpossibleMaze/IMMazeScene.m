@@ -11,6 +11,8 @@
 #import "IMWall.h"
 #import "MZMaze.h"
 
+#import "IMLivesManager.h"
+
 @import AudioToolbox;
 
 static const uint32_t playerCategory    =  0x1 << 0;
@@ -270,12 +272,16 @@ static const float highScoreBackgroundPadding = 4.0;
 
 -(void)didBeginContact:(SKPhysicsContact *)contact
 {
-    [self runAction:[SKAction playSoundFileNamed:@"Die.wav" waitForCompletion:NO]];
-    [self gameOver];
+    if (!isGameOver){
+        [self runAction:[SKAction playSoundFileNamed:@"Die.wav" waitForCompletion:NO]];
+        [self gameOver];
+    }
 }
 
 -(void)gameOver
 {
+    [IMLivesManager sharedManager].lives --;
+    
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     
     [[NSUserDefaults standardUserDefaults] setObject:@(highScoreMarker.position.y) forKey:HIGHSCORE];

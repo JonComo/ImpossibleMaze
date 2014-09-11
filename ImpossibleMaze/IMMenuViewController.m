@@ -11,12 +11,16 @@
 #import "IMMazeViewController.h"
 
 #import "RRAudioEngine.h"
+#import "IMLivesManager.h"
 
 @interface IMMenuViewController ()
 
 @end
 
 @implementation IMMenuViewController
+{
+    __weak IBOutlet UILabel *labelLives;
+}
 
 - (void)viewDidLoad
 {
@@ -24,6 +28,13 @@
     // Do any additional setup after loading the view.
     
     [[RRAudioEngine sharedEngine] playSoundNamed:@"soundtrack" extension:@"wav" loop:YES];
+    
+    ValueChanged updateUI = ^(int value){
+        labelLives.text = [NSString stringWithFormat:@"Lives: %i Next: %i s", [IMLivesManager sharedManager].lives, [IMLivesManager sharedManager].secondsUntilNextLife];
+    };
+    
+    [IMLivesManager sharedManager].livesChangedHandler = updateUI;
+    [IMLivesManager sharedManager].secondsChangedHandler = updateUI;
 }
 
 - (void)didReceiveMemoryWarning

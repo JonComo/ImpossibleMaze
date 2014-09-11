@@ -27,10 +27,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [[RRAudioEngine sharedEngine] playSoundNamed:@"soundtrack" extension:@"wav" loop:YES];
+    //[[RRAudioEngine sharedEngine] playSoundNamed:@"soundtrack" extension:@"wav" loop:YES];
     
-    [IMLivesManager sharedManager].updateUI = ^(void){
-        labelLives.text = [NSString stringWithFormat:@"Lives: %i Next: %i s", [IMLivesManager sharedManager].lives, [IMLivesManager sharedManager].secondsUntilNextLife];
+    [IMLivesManager sharedManager].valuesChanged = ^(void){
+        labelLives.text = [NSString stringWithFormat:@"Lives: %i Next: %.0fs", [IMLivesManager sharedManager].lives, [IMLivesManager sharedManager].secondsUntilNextLife];
     };
 }
 
@@ -42,6 +42,8 @@
 
 - (IBAction)play:(id)sender
 {
+    if ([IMLivesManager sharedManager].lives <= 0) return;
+    
     IMMazeViewController *mazeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"mazeVC"];
     mazeVC.mazeSize = CGSizeMake(12, 12);
     [self presentViewController:mazeVC animated:NO completion:nil];

@@ -8,18 +8,17 @@
 
 #import "IMLivesManager.h"
 
-static int INITIAL_LIVES = 5;
-static int INITIAL_INTERVAL = 30;
+static NSString *IMDateOfNextLifeKey = @"dateOfNextLife";
+static NSString *IMTimeIntervalKey = @"timeInterval";
+static NSString *IMLivesKey = @"lives";
 
-static NSString *IMLivesManagerLivesKey = @"lives";
-static NSString *IMLivesManagerIntervalKey = @"lives";
-
-static NSString *IMLivesManagerDateSavedKey = @"dateSaved";
-static NSString *IMLivesManagerDateNextLifeKey = @"nextLife";
+static int IMDefaultLives = 10;
+static int IMDefaultInterval = 30;
+static int IMLivesMax = 20;
 
 @implementation IMLivesManager
 {
-    NSTimer *timerLives;
+    NSTimer *timerUpdate;
 }
 
 +(IMLivesManager *)sharedManager
@@ -40,6 +39,9 @@ static NSString *IMLivesManagerDateNextLifeKey = @"nextLife";
         //init
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleApplicationBecameActive) name:UIApplicationDidBecomeActiveNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleApplicationBecameInactive) name:UIApplicationDidEnterBackgroundNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleApplicationBecameInactive) name:UIApplicationWillTerminateNotification object:nil];
+        
+        [self unarchiveProperties];
     }
     
     return self;
@@ -50,112 +52,60 @@ static NSString *IMLivesManagerDateNextLifeKey = @"nextLife";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(void)setLives:(int)lives
+-(void)setValuesChanged:(ValuesChanged)valuesChanged
 {
-    _lives = lives;
+    _valuesChanged = valuesChanged;
     
-    if (self.updateUI) self.updateUI();
+    valuesChanged();
 }
 
 -(void)handleApplicationBecameActive
 {
-    self.interval = [self archivedInterval];
-    self.lives = [self archivedLives];
-    self.dateOfNextLife = [self archivedDateOfNextLife];
-    
-    [self assignLivesGainedWhileClosed];
-    
-    [timerLives invalidate];
-    timerLives = nil;
-    timerLives = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeLeftUntilNext) userInfo:nil repeats:YES];
-    
-    if (self.updateUI) self.updateUI();
+    timerUpdate = [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(updateSeondsUntilNextDate) userInfo:nil repeats:YES];
 }
 
 -(void)handleApplicationBecameInactive
 {
-    [timerLives invalidate];
-    timerLives = nil;
+    [timerUpdate invalidate];
+    timerUpdate = nil;
     
-    [self saveLives];
+    [self archiveProperties];
 }
 
--(void)assignLivesGainedWhileClosed
+-(void)updateSeondsUntilNextDate
 {
-    self.dateSaved = [[NSUserDefaults standardUserDefaults] objectForKey:IMLivesManagerDateSavedKey];
+    self.secondsUntilNextLife = [self.dateOfNextLife timeIntervalSinceNow];
     
-    if (self.dateSaved && self.dateOfNextLife){
-        int secondsDifference = [self.dateOfNextLife timeIntervalSinceDate:self.dateSaved];
-        if (secondsDifference > 0){
-            //still some time to go
-            
-        }else{
-            self.lives += ceil(-secondsDifference / self.interval);
-        }
-        
-        [self saveLives]; //also archives date so we dont accidently repeat process
-    }
-}
-
--(void)timeLeftUntilNext
-{
-    self.secondsUntilNextLife = [self.dateSaved timeIntervalSinceDate:self.dateOfNextLife];
+    NSLog(@"Seconds until next: %f", self.secondsUntilNextLife);
     
-    if (self.secondsUntilNextLife <= 0){
+    while (self.secondsUntilNextLife < 0){
+        self.dateOfNextLife = [self.dateOfNextLife dateByAddingTimeInterval:self.timeInterval];
         self.lives ++;
+        self.lives = MIN(self.lives, IMLivesMax);
         
-        self.dateOfNextLife = [NSDate dateWithTimeIntervalSinceNow:self.interval];
+        self.secondsUntilNextLife = [self.dateOfNextLife timeIntervalSinceNow];
     }
     
-    if (self.updateUI) self.updateUI();
+    if (self.valuesChanged) self.valuesChanged();
 }
 
--(int)archivedLives
+-(void)unarchiveProperties
 {
-    NSNumber *storedLives = [[NSUserDefaults standardUserDefaults] objectForKey:IMLivesManagerLivesKey];
-    if (storedLives){
-        return [storedLives intValue];
-    }else{
-        [[NSUserDefaults standardUserDefaults] setObject:@(INITIAL_LIVES) forKey:IMLivesManagerLivesKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
+    NSNumber *interval = [[NSUserDefaults standardUserDefaults] objectForKey:IMTimeIntervalKey];
+    self.timeInterval = interval ? [interval intValue] : IMDefaultInterval;
     
-    return INITIAL_LIVES;
-}
-
--(int)archivedInterval
-{
-    NSNumber *storedInterval = [[NSUserDefaults standardUserDefaults] objectForKey:IMLivesManagerIntervalKey];
-    if (storedInterval){
-        return [storedInterval intValue];
-    }else{
-        [[NSUserDefaults standardUserDefaults] setObject:@(INITIAL_INTERVAL) forKey:IMLivesManagerIntervalKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
+    NSDate *dateOfNext = [[NSUserDefaults standardUserDefaults] objectForKey:IMDateOfNextLifeKey];
+    self.dateOfNextLife = dateOfNext ? dateOfNext : [NSDate dateWithTimeIntervalSinceNow:self.timeInterval];
     
-    return INITIAL_INTERVAL;
+    NSNumber *lives = [[NSUserDefaults standardUserDefaults] objectForKey:IMLivesKey];
+    self.lives = lives ? [lives intValue] : IMDefaultLives;
 }
 
--(NSDate *)archivedDateOfNextLife
+-(void)archiveProperties
 {
-    NSDate *futureDate = [[NSUserDefaults standardUserDefaults] objectForKey:IMLivesManagerDateNextLifeKey];
-    if (futureDate){
-        return futureDate;
-    }else{
-        futureDate = [NSDate dateWithTimeIntervalSinceNow:self.interval];
-        [[NSUserDefaults standardUserDefaults] setObject:futureDate forKey:IMLivesManagerDateNextLifeKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    
-    return futureDate;
-}
-
--(void)saveLives
-{
-    [[NSUserDefaults standardUserDefaults] setObject:@(self.lives) forKey:IMLivesManagerLivesKey];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:IMLivesManagerDateSavedKey];
-
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSUserDefaults standardUserDefaults] setObject:self.dateOfNextLife forKey:IMDateOfNextLifeKey];
+    [[NSUserDefaults standardUserDefaults] setObject:@(self.timeInterval) forKey:IMTimeIntervalKey];
+    [[NSUserDefaults standardUserDefaults] setObject:@(self.lives) forKey:IMLivesKey];
 }
 
 @end

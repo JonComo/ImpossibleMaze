@@ -10,4 +10,6 @@
 
 @interface IMMenuViewController : UIViewController
 
+-(void)reset;
+
 @end

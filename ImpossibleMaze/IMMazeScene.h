@@ -10,11 +10,21 @@
 
 #define HIGHSCORE @"highscore"
 
+@class IMMenuViewController;
+
+typedef void (^MazeGenerated)(void);
+
 @interface IMMazeScene : SKScene
 
-@property (nonatomic, weak) UIViewController *presentingViewController;
+@property (nonatomic, weak) IMMenuViewController *presentingViewController;
 
 @property CGSize mazeSize;
+@property (nonatomic, strong) UIColor *mazeColor;
+
+@property (nonatomic, copy) MazeGenerated mazeGeneratedHandler;
+
 @property (nonatomic, strong) SKNode *world;
+
+-(id)initWithSize:(CGSize)size mazeColor:(UIColor *)mazeColor;
 
 @end

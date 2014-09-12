@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		860C07CE19C29C15008A3C9A /* IMCollectionViewMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C07CD19C29C15008A3C9A /* IMCollectionViewMenu.m */; };
+		860C07D019C29C9A008A3C9A /* cellPlain.xib in Resources */ = {isa = PBXBuildFile; fileRef = 860C07CF19C29C9A008A3C9A /* cellPlain.xib */; };
+		860C07D319C29CE3008A3C9A /* IMCellPlain.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C07D219C29CE3008A3C9A /* IMCellPlain.m */; };
+		860C07D619C2A42A008A3C9A /* IMMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 860C07D519C2A42A008A3C9A /* IMMenuItem.m */; };
+		860C07D819C2B944008A3C9A /* player@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 860C07D719C2B944008A3C9A /* player@2x.png */; };
 		8616C01219BCFBC500E67098 /* IMWall.m in Sources */ = {isa = PBXBuildFile; fileRef = 8616C01119BCFBC500E67098 /* IMWall.m */; };
 		8616C01519BD003F00E67098 /* IMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8616C01419BD003F00E67098 /* IMMenuViewController.m */; };
 		8616C01B19BD0F7800E67098 /* Die.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8616C01A19BD0F7800E67098 /* Die.wav */; };
@@ -30,8 +35,9 @@
 		863764B119B82BFC0055A800 /* MZMaze.m in Sources */ = {isa = PBXBuildFile; fileRef = 863764AE19B82BFC0055A800 /* MZMaze.m */; };
 		863764B219B82BFC0055A800 /* MZRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 863764B019B82BFC0055A800 /* MZRoom.m */; };
 		863764B619B970730055A800 /* IMMazeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 863764B519B970730055A800 /* IMMazeScene.m */; };
-		863764B919B971260055A800 /* IMMazeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 863764B819B971260055A800 /* IMMazeViewController.m */; };
+		863BA6A819C297F1002F78DC /* pad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 863BA6A719C297F1002F78DC /* pad@2x.png */; };
 		8698385A19C139B500AE2FC5 /* IMLivesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8698385919C139B500AE2FC5 /* IMLivesManager.m */; };
+		86D3E2FE19C2C4F30056A422 /* ring@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86D3E2FD19C2C4F30056A422 /* ring@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +51,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		860C07CC19C29C15008A3C9A /* IMCollectionViewMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMCollectionViewMenu.h; sourceTree = "<group>"; };
+		860C07CD19C29C15008A3C9A /* IMCollectionViewMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMCollectionViewMenu.m; sourceTree = "<group>"; };
+		860C07CF19C29C9A008A3C9A /* cellPlain.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = cellPlain.xib; sourceTree = "<group>"; };
+		860C07D119C29CE3008A3C9A /* IMCellPlain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMCellPlain.h; sourceTree = "<group>"; };
+		860C07D219C29CE3008A3C9A /* IMCellPlain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMCellPlain.m; sourceTree = "<group>"; };
+		860C07D419C2A42A008A3C9A /* IMMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMenuItem.h; sourceTree = "<group>"; };
+		860C07D519C2A42A008A3C9A /* IMMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMenuItem.m; sourceTree = "<group>"; };
+		860C07D719C2B944008A3C9A /* player@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player@2x.png"; sourceTree = "<group>"; };
 		8616C01019BCFBC500E67098 /* IMWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMWall.h; sourceTree = "<group>"; };
 		8616C01119BCFBC500E67098 /* IMWall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMWall.m; sourceTree = "<group>"; };
 		8616C01319BD003F00E67098 /* IMMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMenuViewController.h; sourceTree = "<group>"; };
@@ -79,10 +93,10 @@
 		863764B019B82BFC0055A800 /* MZRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZRoom.m; sourceTree = "<group>"; };
 		863764B419B970730055A800 /* IMMazeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMazeScene.h; sourceTree = "<group>"; };
 		863764B519B970730055A800 /* IMMazeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMazeScene.m; sourceTree = "<group>"; };
-		863764B719B971260055A800 /* IMMazeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMazeViewController.h; sourceTree = "<group>"; };
-		863764B819B971260055A800 /* IMMazeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMazeViewController.m; sourceTree = "<group>"; };
+		863BA6A719C297F1002F78DC /* pad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pad@2x.png"; sourceTree = "<group>"; };
 		8698385819C139B500AE2FC5 /* IMLivesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMLivesManager.h; sourceTree = "<group>"; };
 		8698385919C139B500AE2FC5 /* IMLivesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMLivesManager.m; sourceTree = "<group>"; };
+		86D3E2FD19C2C4F30056A422 /* ring@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ring@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,14 +177,19 @@
 				8637648519B82A7B0055A800 /* Main.storyboard */,
 				8616C01319BD003F00E67098 /* IMMenuViewController.h */,
 				8616C01419BD003F00E67098 /* IMMenuViewController.m */,
-				863764B719B971260055A800 /* IMMazeViewController.h */,
-				863764B819B971260055A800 /* IMMazeViewController.m */,
 				863764B419B970730055A800 /* IMMazeScene.h */,
 				863764B519B970730055A800 /* IMMazeScene.m */,
 				8616C01019BCFBC500E67098 /* IMWall.h */,
 				8616C01119BCFBC500E67098 /* IMWall.m */,
 				8698385819C139B500AE2FC5 /* IMLivesManager.h */,
 				8698385919C139B500AE2FC5 /* IMLivesManager.m */,
+				860C07CC19C29C15008A3C9A /* IMCollectionViewMenu.h */,
+				860C07CD19C29C15008A3C9A /* IMCollectionViewMenu.m */,
+				860C07D119C29CE3008A3C9A /* IMCellPlain.h */,
+				860C07D219C29CE3008A3C9A /* IMCellPlain.m */,
+				860C07CF19C29C9A008A3C9A /* cellPlain.xib */,
+				860C07D419C2A42A008A3C9A /* IMMenuItem.h */,
+				860C07D519C2A42A008A3C9A /* IMMenuItem.m */,
 				8637649019B82A7B0055A800 /* Images.xcassets */,
 				8637647A19B82A7B0055A800 /* Supporting Files */,
 			);
@@ -220,6 +239,9 @@
 		863764BA19B9738C0055A800 /* media */ = {
 			isa = PBXGroup;
 			children = (
+				86D3E2FD19C2C4F30056A422 /* ring@2x.png */,
+				860C07D719C2B944008A3C9A /* player@2x.png */,
+				863BA6A719C297F1002F78DC /* pad@2x.png */,
 				8616C01C19BD1A9300E67098 /* soundtrack.wav */,
 				8616C01A19BD0F7800E67098 /* Die.wav */,
 			);
@@ -304,9 +326,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8637647E19B82A7B0055A800 /* InfoPlist.strings in Resources */,
+				860C07D019C29C9A008A3C9A /* cellPlain.xib in Resources */,
 				8637649119B82A7B0055A800 /* Images.xcassets in Resources */,
 				8616C01B19BD0F7800E67098 /* Die.wav in Resources */,
+				863BA6A819C297F1002F78DC /* pad@2x.png in Resources */,
+				86D3E2FE19C2C4F30056A422 /* ring@2x.png in Resources */,
 				8637648719B82A7B0055A800 /* Main.storyboard in Resources */,
+				860C07D819C2B944008A3C9A /* player@2x.png in Resources */,
 				8616C01D19BD1A9300E67098 /* soundtrack.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,7 +354,10 @@
 			files = (
 				863764B219B82BFC0055A800 /* MZRoom.m in Sources */,
 				863764B119B82BFC0055A800 /* MZMaze.m in Sources */,
+				860C07D319C29CE3008A3C9A /* IMCellPlain.m in Sources */,
 				8637648419B82A7B0055A800 /* IMAppDelegate.m in Sources */,
+				860C07CE19C29C15008A3C9A /* IMCollectionViewMenu.m in Sources */,
+				860C07D619C2A42A008A3C9A /* IMMenuItem.m in Sources */,
 				8616C01519BD003F00E67098 /* IMMenuViewController.m in Sources */,
 				8616C01219BCFBC500E67098 /* IMWall.m in Sources */,
 				8616C02319BD1B5A00E67098 /* RRAudioPlayer.m in Sources */,
@@ -336,7 +365,6 @@
 				8637648019B82A7B0055A800 /* main.m in Sources */,
 				8616C02219BD1B5A00E67098 /* RRAudioEngine.m in Sources */,
 				8698385A19C139B500AE2FC5 /* IMLivesManager.m in Sources */,
-				863764B919B971260055A800 /* IMMazeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

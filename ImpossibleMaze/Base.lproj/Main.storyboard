@@ -15,81 +15,14 @@
                     <view key="view" contentMode="scaleToFill" id="M6z-ur-ngI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmu-co-OSS">
-                                <rect key="frame" x="20" y="488" width="280" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="lC3-Ir-ukR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <state key="normal" title="PLAY">
-                                    <color key="titleColor" red="1" green="0.10805122821495394" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="play:" destination="uzg-3o-LKa" eventType="touchUpInside" id="cbw-wc-9M6"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IMPOSSIBLE MAZE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="IZk-0e-rcR">
-                                <rect key="frame" x="20" y="20" width="280" height="171"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="171" id="syh-tq-ZDx"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lives: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1l-Lg-2Nu">
-                                <rect key="frame" x="20" y="420" width="280" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="yvH-y4-Fta"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="fmu-co-OSS" secondAttribute="trailing" constant="20" id="102-bO-c8w"/>
-                            <constraint firstItem="C1l-Lg-2Nu" firstAttribute="leading" secondItem="M6z-ur-ngI" secondAttribute="leading" constant="20" id="7zB-em-HiS"/>
-                            <constraint firstAttribute="trailing" secondItem="IZk-0e-rcR" secondAttribute="trailing" constant="20" id="9KD-bb-mHI"/>
-                            <constraint firstItem="IZk-0e-rcR" firstAttribute="leading" secondItem="M6z-ur-ngI" secondAttribute="leading" constant="20" id="Fd2-id-7VI"/>
-                            <constraint firstAttribute="trailing" secondItem="C1l-Lg-2Nu" secondAttribute="trailing" constant="20" id="PFB-9T-fTC"/>
-                            <constraint firstItem="6Kq-hR-u8c" firstAttribute="top" secondItem="fmu-co-OSS" secondAttribute="bottom" constant="20" id="Qla-VA-3zB"/>
-                            <constraint firstItem="IZk-0e-rcR" firstAttribute="top" secondItem="bDv-PB-8cH" secondAttribute="bottom" constant="20" id="oVA-XE-6M8"/>
-                            <constraint firstItem="fmu-co-OSS" firstAttribute="leading" secondItem="M6z-ur-ngI" secondAttribute="leading" constant="20" id="roH-NA-opu"/>
-                            <constraint firstItem="fmu-co-OSS" firstAttribute="top" secondItem="C1l-Lg-2Nu" secondAttribute="bottom" constant="8" id="sou-pG-FPj"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="labelLives" destination="C1l-Lg-2Nu" id="bAt-oH-fgG"/>
-                    </connections>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GBS-Tv-V0t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-207" y="67"/>
-        </scene>
-        <!--Maze View Controller-->
-        <scene sceneID="CtS-rA-C9T">
-            <objects>
-                <viewController storyboardIdentifier="mazeVC" id="LVB-YS-i5n" customClass="IMMazeViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TvN-0d-DFh"/>
-                        <viewControllerLayoutGuide type="bottom" id="aVg-JY-jeM"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bdc-N1-crn" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="btX-cZ-eVz" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="182" y="67"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

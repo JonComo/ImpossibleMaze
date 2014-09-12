@@ -76,7 +76,7 @@ static int IMLivesMax = 20;
 {
     self.secondsUntilNextLife = [self.dateOfNextLife timeIntervalSinceNow];
     
-    NSLog(@"Seconds until next: %f", self.secondsUntilNextLife);
+    //NSLog(@"Seconds until next: %f", self.secondsUntilNextLife);
     
     while (self.secondsUntilNextLife < 0){
         self.dateOfNextLife = [self.dateOfNextLife dateByAddingTimeInterval:self.timeInterval];

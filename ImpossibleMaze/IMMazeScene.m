@@ -13,6 +13,8 @@
 
 #import "IMLivesManager.h"
 
+#import "IMMenuViewController.h"
+
 @import AudioToolbox;
 
 static const uint32_t playerCategory    =  0x1 << 0;
@@ -27,6 +29,8 @@ static const float highScoreBackgroundPadding = 4.0;
 
 @implementation IMMazeScene
 {
+    SKSpriteNode *touchTip;
+    
     SKSpriteNode *player;
     
     SKLabelNode *highScoreLabel;
@@ -55,11 +59,11 @@ static const float highScoreBackgroundPadding = 4.0;
     float score;
 }
 
--(id)initWithSize:(CGSize)size
+-(id)initWithSize:(CGSize)size mazeColor:(UIColor *)mazeColor
 {
     if (self = [super initWithSize:size])
     {
-        self.backgroundColor = [UIColor whiteColor];
+        _mazeColor = mazeColor;
                 
         //NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
         //[[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
@@ -77,7 +81,9 @@ static const float highScoreBackgroundPadding = 4.0;
         
         walls = [NSMutableArray array];
         
-        player = [[SKSpriteNode alloc] initWithColor:[UIColor blackColor] size:CGSizeMake(8, 8)];
+        player = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"player"] color:[UIColor whiteColor] size:CGSizeMake(8, 8)];
+        player.colorBlendFactor = 1;
+        player.color = [UIColor whiteColor];
         player.position = CGPointMake(size.width/2, size.height/2);
         [self.world addChild:player];
         
@@ -113,8 +119,9 @@ static const float highScoreBackgroundPadding = 4.0;
         
         [self updateHighScoreLabel];
         
-        lastMazeY = 0;
+        [self showTouchTip];
         
+        lastMazeY = 0;
         slowUpdate = 0;
         shakeAmount = 0;
     }
@@ -152,14 +159,15 @@ static const float highScoreBackgroundPadding = 4.0;
                 
             }];
             
+            if (weakSelf.mazeGeneratedHandler) weakSelf.mazeGeneratedHandler();
         });
     });
 }
 
 -(SKSpriteNode *)addWallToPoint:(CGPoint)point size:(CGSize)size
 {
-    IMWall *wall = [[IMWall alloc] initWithColor:[UIColor blackColor] size:size position:point];
-
+    IMWall *wall = [[IMWall alloc] initWithColor:self.mazeColor size:size position:point];
+    
     wall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:wall.size];
     wall.physicsBody.dynamic = NO;
     
@@ -178,7 +186,7 @@ static const float highScoreBackgroundPadding = 4.0;
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (isGameOver){
-        [self.presentingViewController dismissViewControllerAnimated:NO completion:nil];
+        [self.presentingViewController reset];
         return;
     }
     
@@ -190,7 +198,9 @@ static const float highScoreBackgroundPadding = 4.0;
 {
     currentTouch = [[touches anyObject] locationInNode:self];
     
-    self.physicsWorld.gravity = CGVectorMake(currentTouch.x - lastTouch.x, currentTouch.y - lastTouch.y);
+    CGPoint goal = CGPointMake(currentTouch.x - lastTouch.x, currentTouch.y - lastTouch.y);
+    
+    self.physicsWorld.gravity = CGVectorMake(goal.x , goal.y);
     
     lastTouch = currentTouch;
 }
@@ -268,6 +278,17 @@ static const float highScoreBackgroundPadding = 4.0;
     }
     
     highScoreLabelBackground.size = CGSizeMake(highScoreLabel.frame.size.width + highScoreBackgroundPadding, highScoreLabel.frame.size.height + highScoreBackgroundPadding);
+}
+
+-(void)showTouchTip
+{
+    touchTip = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"ring"]];
+    touchTip.position = CGPointMake(self.size.width/2, 100);
+    touchTip.xScale = touchTip.yScale = 0;
+    [self addChild:touchTip];
+    
+    touchTip.alpha = 0;
+    [touchTip runAction:[SKAction group:@[[SKAction fadeAlphaTo:1 duration:0.2], [SKAction scaleTo:1 duration:0.2]]]];
 }
 
 -(void)didBeginContact:(SKPhysicsContact *)contact
